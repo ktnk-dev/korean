@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Korean / Словарь</title>
+<style>
+h3 {
+    background-color: #222;
+    padding: 5px 7px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+div {
+
+}
+.w {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} .w > div {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+} p {
+    color: #999;
+}
+</style>
+</head>
+<body>
+    <h1>Личный словарь</h1>
+
+
+<script src="js/w.js"></script>
+<script>
+for (let i = 0; i < Object.keys(data).length; i++) {
+    const group = Object.keys(data)[i];
+    document.body.innerHTML += `<h2>${group}</h2>`
+
+    for (let I = 0; I < data[group].length; I++) {
+        const word = data[group][I];
+        if (word.v) {plv = `<a href="${word.v}">Voice</a>`}
+        else {plv = ''}
+        console.log(plv);
+        document.body.innerHTML += `    
+        <div class="w">
+            <div>
+                <h3>${word.k}</h3>
+                <p>[ ${word.t} ]</p>
+            </div>
+            <div>
+                <h3>${word.r}</h3>${plv}
+            </div>
+        </div>`
+        
+    }
+}
+</script>
+</body>
